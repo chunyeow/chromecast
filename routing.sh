@@ -11,3 +11,4 @@ echo '1' > /proc/sys/net/ipv4/ip_forward
 service dnsmasq restart
 hostapd /etc/hostapd/hostapd.conf &
 route add 239.255.255.250 dev wlan1
+ifconfig wlan0 up
