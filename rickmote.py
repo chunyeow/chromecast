@@ -146,34 +146,8 @@ class RickcastWindow( Tk ):
         self.MainMenu()
         
     def ConnectToNetwork(self, network):
-
-        filename = "/etc/NetworkManager/system-connections/Chromecast"
-
-        f = open(filename, "w")
-
-        #make a new connection file 
-        connection = ("[connection]"
-        "\nid=Chromecast"
-        "\nuuid=170968e7-b2c2-4cf6-821b-bc9a8ba6de93"
-        "\ntype=802-11-wireless"
-        "\n"
-        "\n[802-11-wireless]"
-        "\nssid=" + network.SSID +
-        "\nmode=infrastructure"
-        "\nmac-address=" + WLAN0_BSSID +
-        "\n"
-        "\n[ipv6]"
-        "\nmethod=auto"
-        "\nip6-privacy=2"
-        "\n"
-        "\n[ipv4]"
-        "\nmethod=auto")
-
-        f.write(connection)
-        f.close()
-
-        os.system("nmcli con up id Chromecast iface wlan0")
-        
+        # Simply the command to use iw
+        os.system("iw dev wlan0 connect -w \"" + network.SSID + "\"")        
 
     def Rickroll(self, network):
         #Connect to the victim's network
@@ -200,9 +174,10 @@ class RickcastWindow( Tk ):
                     #First, set the routing correctly, since it's probably all screwed up
                     time.sleep(5)
                     #Disconnect from client wifi
-                    os.system("nmcli dev disconnect iface wlan0")
+                    os.system("iw dev wlan0 disconnect")
                     #Set routes to get out to the Internet
-                    os.system("dhclient eth0")
+                    #os.system("dhclient eth0")
+                    # in most of case, eth0 already connected to Internet
                     self.PlayVideo()
                     time.sleep(3)
                     self.PlayVideo()
@@ -214,7 +189,7 @@ class RickcastWindow( Tk ):
             "DEBUG: Not a Chromecast network. Detailed error -> " + str(e)
 
         #Disconnect from client wifi
-        os.system("nmcli dev disconnect iface wlan0")
+        os.system("iw dev wlan0 disconnect")
 
     def PlayVideo(self):
         cast = pc.PyChromecast()
