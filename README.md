@@ -24,10 +24,10 @@ The Rickmote Controller needs to pull a lot of Wi-Fi shenanigans in order to aut
 * Three wireless interfaces.
     * wlan0 is a client interface that is set to Managed mode
     * mon0 is a monitor mode interface that supports packet injection
-    * wlan2 is a an AP that is set to Master mode
-* wlan2 is an access point to an open AP named "RickmoteController", using hostapd
-* wlan2 has an IP of 192.168.75.1, netmask 255.255.255.0
-* A working Internet connection, bridged to wlan2
+    * wlan1 is a an AP that is set to Master mode
+* wlan1 is an access point to an open AP named "RickmoteController", using hostapd
+* wlan1 has an IP of 192.168.75.1, netmask 255.255.255.0
+* A working Internet connection, bridged to wlan1
     * Tethering to a smart phone tends to be a decent method
     * We currently only have support for playing YouTube videos from the real Internet
 * It is also worth noting that the current Rickmote de-authenticates every wireless network it sees, and is generally very rude

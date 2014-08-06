@@ -96,3 +96,6 @@ def discover_chromecasts(max_devices=None, timeout=DISCOVER_TIMEOUT):
         sock.close()
 
     return ips
+
+ip=discover_chromecasts();
+print ip
