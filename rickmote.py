@@ -148,6 +148,7 @@ class RickcastWindow( Tk ):
     def ConnectToNetwork(self, network):
         # Simply the command to use iw
         os.system("iw dev wlan0 connect -w \"" + network.SSID + "\"")        
+	os.system("dhclient wlan0")
 
     def Rickroll(self, network):
         #Connect to the victim's network
