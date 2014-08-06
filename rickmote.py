@@ -177,8 +177,7 @@ class RickcastWindow( Tk ):
                     #Disconnect from client wifi
                     os.system("iw dev wlan0 disconnect")
                     #Set routes to get out to the Internet
-                    #os.system("dhclient eth0")
-                    # in most of case, eth0 already connected to Internet
+                    os.system("dhclient eth0")
                     self.PlayVideo()
                     time.sleep(3)
                     self.PlayVideo()
