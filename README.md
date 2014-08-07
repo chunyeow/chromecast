@@ -36,3 +36,11 @@ The Rickmote Controller needs to pull a lot of Wi-Fi shenanigans in order to aut
 
 #### More Information
 For more information, [try here](https://www.youtube.com/watch?v=dQw4w9WgXcQ).
+
+#### Notes (CY)
+How the procedures work for Hijacking Chromecast:
+Step 1: Deauth the STA connectivity of Chromecast to the WiFi AP.
+Step 2: Connect to the AP mode of Chromecast, usually set as "Network Name"
+Step 3: HTTP POST to set the Chromecast to the AP setup for hijacking purpose
+Step 4: Find Chromecast using upnp protocol using multicast address (not working certain times) 
+Step 5: Enable the Youtube apps
